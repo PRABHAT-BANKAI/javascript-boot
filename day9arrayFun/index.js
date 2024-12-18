@@ -50,12 +50,105 @@ console.log(arr);
 // }
 // console.log(string)
 
-function sum(a, b) {
-  return a + b;
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// function calculate(a, b, callback) {
+//   console.log(callback(a, b));
+// }
+
+// calculate(5, 10, sum);
+
+
+
+let dataOfNumber = [24,655,79,82,7,12,75,74,90,17,8]
+let string2 = "javascript"
+
+// dataOfNumber.splice(3,4,"hello" ,"javscript")// first argument for starting index, second argument for how many remove elements in array 
+console.log(dataOfNumber)
+
+
+const storeSlice = dataOfNumber.slice(4,7)// first argument for starting point and  second argument  for end point 
+const stringSlice = string2.slice(0,4)
+console.log(storeSlice)
+console.log(stringSlice)
+
+
+
+let dataOfUser = ["john","batman","superman","aquaman"]
+// first map create new array internally
+// second update element in new array
+// third return new array
+
+// high order function 
+const storeCharacterData = dataOfUser.map((element)=>{
+  return element+ " " +"DC comics"
+})
+
+console.log(storeCharacterData)
+
+
+let numbersData = [12,14,15,17,18,19,20,21,22,23,24,25]
+
+
+const storeNumbers = numbersData.filter((element)=>{
+  return element > 20
+})
+
+console.log(storeNumbers)
+
+let sum = 0
+const storeForEach=  numbersData.forEach((element)=>{
+  console.log(element)
+  sum += element
+})
+console.log(sum)
+console.log(storeForEach)
+
+
+
+const newValue = numbersData.indexOf(24)
+console.log(newValue)
+
+const findIndex = numbersData.findIndex((element)=>element>24)
+
+console.log(findIndex)
+
+
+let techStack =  ["react","node","html","css","mongodb","vercel","netlify","javascript"]   //["node","node","node","css"]
+
+const resultStack = techStack.includes("css")
+
+console.log(resultStack)
+
+
+const storeEvery = techStack.every((element)=>{
+ return element == "node"
+})
+console.log(storeEvery)
+
+const storeSome = techStack.some((element)=>{
+  return element == "javascript"
+ })
+ console.log(storeSome,"some")
+
+
+
+
+ let reduceData = [10,20,30,40,[1,2,3,[6,15,[1,2,33]]]]
+
+
+ const storeReduceData = reduceData.reduce((acc,element)=>{
+
+if(typeof element == "number"){
+  acc = [...acc, element]
+}else{
+   acc = [...acc,...element,]
 }
 
-function calculate(a, b, callback) {
-  console.log(callback(a, b));
-}
+ return acc
+ },[])
 
-calculate(5, 10, sum);
+
+ console.log(storeReduceData,"flat")//reduce is not working for flat the array directly
