@@ -1,3 +1,20 @@
+
+
+1. Create an object to represent your favorite movie.
+
+Include properties like title, director, year, and genre.
+
+Add a method to display the movie details.
+
+2. Create an array of objects to represent products in an e-commerce store.
+
+Include properties like name, price, and stock.
+
+Write a loop to display all product details.
+
+
+
+
 ## 1. Create a Library Object:
    A library needs to store books with their titles and authors. Create an object with a method that accepts an array of book titles and their authors, and adds them to the library's collection.
    ```javascript
