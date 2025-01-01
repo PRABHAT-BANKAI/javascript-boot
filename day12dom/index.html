@@ -1,0 +1,59 @@
+<!-- DOM HTML
+queryqelector
+querySelectorsAll
+AddEventListner -->
+<!-- ""
+''
+`` -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>DOM (document object model)</h1>
+    <p id="text"></p>
+    <p class="heading"></p>
+    <h3>1</h3>
+    <h3>2</h3>
+    <h3>3</h3>
+    <h3>4</h3>
+    <h4></h4>
+    <h4></h4>
+    <h4></h4>
+    <h4></h4>
+    <span>color change text</span>
+    <div id="card"></div>
+
+    <script>
+      let text = document.querySelector("#text");
+      let head = document.querySelector(".heading");
+      let para = document.querySelector("p");
+      let headings = document.querySelectorAll("h3");
+      let head2 = document.querySelectorAll("h4");
+      let color = document.querySelector("span");
+      let card = document.querySelector("#card");
+      let btn = document.createElement("button");
+      btn.textContent = "color change";
+      btn.addEventListener("click", () => {
+     color.style.color = "aqua"
+      });
+      card.append(btn)
+      for (let i = 0; i < head2.length; i++) {
+        head2[i].innerText = `item ${i + 1}`;
+      }
+      console.log(head2);
+      // console.log(text);
+      //  console.log(head);
+      console.log(headings);
+      text.innerHTML = "hello world";
+
+      for (let item of headings) {
+        console.log(item.innerText);
+      }
+    </script>
+  </body>
+</html>
