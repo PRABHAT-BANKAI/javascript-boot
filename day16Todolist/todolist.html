@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card {
+        height: 100px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./show.html">SHow</a>
+    <input id="text" type="text" placeholder="Enter your task" />
+    <button id="add">add</button>
+    <div id="container"></div>
+    <script>
+      let todolist = JSON.parse(localStorage.getItem("todoData")) || [];
+      let text = document.getElementById("text");
+      let add = document.querySelector("#add");
+      let container = document.getElementById("container");
+
+      add.addEventListener("click", () => {
+        if (text.value == "") {
+          alert("Please enter a task");
+          return;
+        }
+        console.log(text.value);
+        todolist.push(text.value);
+        localStorage.setItem("todoData", JSON.stringify(todolist));
+        showData(); // refresh the list when adding a new task  // Added this line to show the updated list after adding a new task.
+        console.log(todolist);
+        text.value = "";
+      });
+
+      function showData() {
+        container.innerHTML = ""; // clear the container before adding new data  // Added this line to clear the container before adding new data.
+        todolist.forEach((element, index) => {
+          let card = document.createElement("div");
+          card.className = "card";
+          let para = document.createElement("p");
+          let edit = document.createElement("button");
+          edit.textContent = "Edit";
+
+          edit.addEventListener("click",()=>{
+         let storeValue =   prompt(element)
+         console.log(storeValue);
+         todolist[index]= storeValue
+         localStorage.setItem("todoData",JSON.stringify(todolist))
+         showData()
+          })
+          let del = document.createElement("button");
+          del.textContent = "Delete";
+
+          del.addEventListener("click",()=>{
+          todolist =  todolist.filter((ele,i)=>index != i)
+          localStorage.setItem("todoData",JSON.stringify(todolist))
+          showData()
+          })
+          para.innerText = element;
+          card.append(para, edit, del);
+          container.append(card);
+        });
+      }
+
+      showData();
+    </script>
+  </body>
+</html>
