@@ -1,12 +1,21 @@
 class Animal {
   // constructor
+  #name;
   constructor(name, color) {
-    this.name = name;
+    this.#name = name;
     this.color = color;
   }
   // method// attach with prototype
-  speak(sound) {
-    console.log(`${this.name} says ${sound}`);
+  #speak(sound) {
+    console.log(`${this.#name} says ${sound}`);
+  }
+
+  speakShow(sound) {
+    this.#speak(sound);
+  }
+
+  showFood() {
+    console.log("food");
   }
 }
 
@@ -14,6 +23,9 @@ class Dog extends Animal {
   constructor(name, types, color) {
     super(name, color);
     this.types = types;
+  }
+  showFood(){
+    console.log("bone");
   }
 }
 
@@ -27,5 +39,6 @@ class Dog extends Animal {
 // console.log(cat.speak == dog.speak);
 
 let pug = new Dog("jack", "street", "black");
-console.log(pug);
-pug.speak("bark");
+
+pug.speakShow("bark");
+pug.showFood()
