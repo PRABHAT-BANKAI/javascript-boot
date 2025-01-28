@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Dog api</h1>
+    <p>Application programming interface</p>
+    <p>
+      API stands for Application Programming Interface. In the context of APIs,
+      the word Application refers to any software with a distinct function.
+      Interface can be thought of as a contract of service between two
+      applications.
+    </p>
+    <button id="btn">fetch</button>
+    <img id="image" src="" alt="" height="200px" />
+    <script>
+      let image = document.getElementById("image");
+      let btn = document.getElementById("btn");
+      btn.addEventListener("click", showData);
+      async function showData() {
+        // fetch("https://dog.ceo/api/breeds/image/random")
+        //   .then((response) => response.json())
+        //   .then((res) => {
+        //     console.log(res);
+        //     image.src = res.message;
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   })
+        //   .finally(() => {
+        //     console.log("Fetched");
+        //   });
+
+        let data = await fetch("https://dog.ceo/api/breeds/image/random");
+      let getData = await data.json()
+      console.log(getData);
+      image.src = getData.message;
+      }
+      showData(); // Call the function to fetch data on page load
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input-text" type="text" placeholder="enter dog name" />
+    <button id="btn">search</button>
+    <br />
+    <img id="image" src="" alt="" height="200px" />
+    <script>
+      const btn = document.getElementById("btn");
+      const inputText = document.getElementById("input-text");
+      const image = document.getElementById("image");
+
+      async function showData() {
+        if (inputText.value == "") {
+          alert("Please enter a dog name");
+          return;
+        }
+        try {
+          let data = await fetch(
+            `https://dog.ceo/api/breed/${inputText.value}/images/random` //api key =""
+          );
+          let response = await data.json();
+          console.log(response, "response");
+          if (response.status === "error") {
+            alert("Invalid dog name. Please try again");
+
+            inputText.value = "";
+            return;
+          }
+          image.src = response.message;
+          inputText.value = "";
+        } catch (error) {
+          alert("Invalid dog name. Please try again");
+          console.log(error, "error");
+          inputText.value = "";
+        }
+      }
+      btn.addEventListener("click", showData);
+
+      // const apikey = "Write your api key "fgxjhdjy564u6u68y9ogoihih"
+      //  const URL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=vadodara"+`&appid=${apikey}`
+
+      // for understanding
+
+      // fetch(URL).then.then.catch
+    </script>
+  </body>
+</html>
