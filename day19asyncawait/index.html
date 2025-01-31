@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>async await and promises</h1>
+    <h2>
+      Promise is a object and return three statement - Pending - Fulfilled -
+      Rejected
+    </h2>
+    <script>
+      let promise = new Promise((resolve, reject) => {
+        if (8 % 2 == 1) {
+          setTimeout(() => {
+            resolve("Even Number");
+          }, 3000);
+        } else {
+          reject("Odd Number");
+        }
+      });
+      // console.log(promise);
+
+      // promise
+      //   .then((res) => {
+      //     console.log(res,"then");
+      //   })
+      //   .catch((err) => {
+      //     console.log(err, "catch");
+      //   });
+
+      async function fetchShow() {
+        try {
+          const data = await promise;
+          console.log(data, "fetchShow");
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      fetchShow();
+    </script>
+  </body>
+</html>
