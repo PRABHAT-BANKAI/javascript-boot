@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>weather app</h1>
+    <input id="inputText" type="text" placeholder="Enter city name" />
+    <button id="btn">Search</button>
+    <div id="main-container"></div>
+    <script>
+      const btn = document.getElementById("btn");
+      const inputtext = document.getElementById("inputText");
+      async function showWeather() {
+        if (inputtext.value === "") {
+          alert("Please enter a city name");
+          return;
+        }
+        const apiKey = "ee00f0931ee9d5bf60ca286cbd6c50f1";
+        const weatherData = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${inputtext.value}` +
+            `&appid=${apiKey}`
+        );
+        const data = await weatherData.json();
+        console.log(data);
+        if (data.cod == 200) {
+          const mainDiv = document.getElementById("main-container");
+          mainDiv.innerHTML = `
+        <h2>${data.name}</h2>
+        <p>Temperature: ${data.main.temp}°C</p>
+        <p>Humidity: ${data.main.humidity}%</p>
+        <p>Wind Speed: ${data.wind.speed} m/s</p>
+        `;
+        } else {
+          alert("Invalid city name. Please try again");
+        }
+        inputtext.value = "";
+      }
+      btn.addEventListener("click", showWeather);
+    </script>
+  </body>
+</html>
